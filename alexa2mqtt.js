@@ -74,7 +74,6 @@ function buildConfig () {
       switch: element.switch,
       control: element.control,
       color: element.color
-						  
     };
     alexaConfig[element.id] = buildExtendedColorLight(element.name);
   }
@@ -220,13 +219,13 @@ server.route({
     if (mqttConfifg) {
       var topic = mqttConfifg.switch.topic;
       var value = mqttConfifg.switch.off;
-	  if (command.xy) {
+      if (command.xy) {
         value = JSON.stringify(
           {
-            x : command.xy[0],
-            y : command.xy[1]
+            x: command.xy[0],
+            y: command.xy[1]
           });
-        topic = mqttConfig.color.topic;
+        topic = mqttConfifg.color.topic;
       } else if (command.bri) {
         value = '' + command.bri / 2.55;
         topic = mqttConfifg.control.topic;
